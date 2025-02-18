@@ -1421,6 +1421,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@camwiegert/typical@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@camwiegert/typical@npm:0.1.1"
+  checksum: 66a9969c37b8e0ed57a974e1e807758c28a3e971edc5281726a1a0d11a4ffbc0478b8bd09987e2119332b711ef2a63f603ef396bb430c42b0209ae15cb747639
+  languageName: node
+  linkType: hard
+
 "@citation-js/core@npm:^0.7.14":
   version: 0.7.18
   resolution: "@citation-js/core@npm:0.7.18"
@@ -9850,6 +9857,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-typical@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "react-typical@npm:0.1.3"
+  dependencies:
+    "@camwiegert/typical": ^0.1.1
+  peerDependencies:
+    prop-types: ^15.5.4
+    react: ^15.0.0 || ^16.0.0
+    react-dom: ^15.0.0 || ^16.0.0
+  checksum: 3d39d50bc96a19373526a2a58ac8ea4c6bd31ebf8f0b7e3dd4bd39f412aa90497c928f90fa872685b02db35d954269090741e1176e25e0bd67f2272a2d2adb69
+  languageName: node
+  linkType: hard
+
 "react-virtual@npm:^2.8.2":
   version: 2.10.4
   resolution: "react-virtual@npm:2.10.4"
@@ -11500,6 +11520,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.6.11
     react: 19.0.0
     react-dom: 19.0.0
+    react-typical: ^0.1.3
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0
     rehype-citation: ^2.0.0
