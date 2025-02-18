@@ -52,7 +52,7 @@ export default function AuthorLayout({ children, content }: Props) {
           </div>
         </div>
         <section>
-            <img src="/static/images/lain.jpg"
+            <Image src="/static/images/lain.jpg" width={1920} height={1080}
              alt="hero"
             className="items-start pt-5 rounded-lg space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0" />
           </section>
