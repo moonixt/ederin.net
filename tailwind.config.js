@@ -4,7 +4,7 @@
 module.exports = {
   theme: {
     extend: {
-            typography: ({ theme }) => ({
+      typography: ({ theme }) => ({
         DEFAULT: {
           css: {
             a: {
