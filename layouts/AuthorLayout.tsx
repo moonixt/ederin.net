@@ -24,7 +24,7 @@ export default function AuthorLayout({ children, content }: Props) {
           
         </div> */}
         <div className="items-start space-y-2">
-          <div className="flex flex-col items-center space-x-2 ">
+          <div className="flex flex-col items-center space-x-2">
             {avatar && (
               <Image
                 src={avatar}
