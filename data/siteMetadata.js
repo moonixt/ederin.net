@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'DerekNotes',
+  title: 'Web Log',
   author: 'Derek Willian',
-  headerTitle: 'DerekNotes',
+  headerTitle: 'Web Log / Derek',
   description: 'Criado com Next.js, Tailwind CSS e MDX',
   language: 'en-us',
   theme: 'system', // system, dark or light
@@ -24,7 +24,7 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
-  stickyNav: false,
+  stickyNav: true,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
@@ -63,6 +63,7 @@ const siteMetadata = {
     giscusConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://giscus.app/
+      
       repo: process.env.NEXT_PUBLIC_GISCUS_REPO,
       repositoryId: process.env.NEXT_PUBLIC_GISCUS_REPOSITORY_ID,
       category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
@@ -83,6 +84,7 @@ const siteMetadata = {
       // This corresponds to the `data-lang="en"` in giscus's configurations
       lang: 'en',
     },
+    
   },
   search: {
     provider: 'kbar', // kbar or algolia
