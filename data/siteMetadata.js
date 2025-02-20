@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Web Log / Derek',
+  title: 'Web Log',
   author: 'Derek Willian',
   headerTitle: 'Web Log / Derek',
   description: 'Criado com Next.js, Tailwind CSS e MDX',
@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://tailwind-css-starter-blog-orpin-gamma.vercel.app/',
   siteRepo: 'https://github.com/moonixt/tailwind-weblog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/cuttedd.jpg`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
   github: 'https://github.com/moonixt',
