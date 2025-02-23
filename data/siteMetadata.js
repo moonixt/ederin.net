@@ -8,8 +8,8 @@ const siteMetadata = {
   theme: 'dark', // system, dark or light
   siteUrl: 'https://tailwind-css-starter-blog-orpin-gamma.vercel.app/',
   siteRepo: 'https://github.com/moonixt/tailwind-weblog',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/2.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/2.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
   github: 'https://github.com/moonixt',
