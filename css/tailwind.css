@@ -49,11 +49,11 @@
   --z-80: 80;
 }
 
-.backdark{
+.backdark {
   background: linear-gradient(135deg, #121212, #5035a377);
 }
 
-.backlight{
+.backlight {
   background: linear-gradient(135deg, #ffffff, #849ab0e6);
 }
 

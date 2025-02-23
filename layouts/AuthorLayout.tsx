@@ -31,7 +31,7 @@ export default function AuthorLayout({ children, content }: Props) {
                 alt="avatar"
                 width={192}
                 height={192}
-                className="h-48 w-48 rounded-full border-2 border-blue-300 "
+                className="h-48 w-48 rounded-full border-2 border-blue-300"
               />
             )}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight text-pink-600">
