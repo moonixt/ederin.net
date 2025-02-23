@@ -7,7 +7,6 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import Image from '@/components/Image'
 
-
 const Header = () => {
   let headerClass = 'flex items-center w-full  justify-between py-10'
   if (siteMetadata.stickyNav) {
