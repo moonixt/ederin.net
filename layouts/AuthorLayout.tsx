@@ -51,6 +51,7 @@ export default function AuthorLayout({ children, content }: Props) {
             {children}
           </div>
         </div>
+
         <section>
           <Image
             src="/static/images/rose.jpg"
