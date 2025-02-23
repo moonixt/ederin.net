@@ -24,14 +24,14 @@ export default function AuthorLayout({ children, content }: Props) {
           
         </div> */}
         <div className="items-start space-y-2">
-          <div className="flex flex-col items-center space-x-2">
+          <div className="flex flex-col items-center space-x-2 pt-6">
             {avatar && (
               <Image
                 src={avatar}
                 alt="avatar"
                 width={192}
                 height={192}
-                className="h-48 w-48 rounded-full"
+                className="h-48 w-48 rounded-full border-2 border-blue-300 "
               />
             )}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight text-pink-600">

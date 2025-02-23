@@ -5,7 +5,7 @@ const siteMetadata = {
   headerTitle: 'Web Log / Derek',
   description: 'Criado com Next.js, Tailwind CSS e MDX',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'dark', // system, dark or light
   siteUrl: 'https://tailwind-css-starter-blog-orpin-gamma.vercel.app/',
   siteRepo: 'https://github.com/moonixt/tailwind-weblog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
@@ -24,7 +24,7 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
-  stickyNav: true,
+  stickyNav: false,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.

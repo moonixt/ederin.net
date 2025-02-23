@@ -4,6 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Core theme configuration */
+
 @theme {
   /* Font families */
   --font-sans:
@@ -46,6 +47,14 @@
   --z-60: 60;
   --z-70: 70;
   --z-80: 80;
+}
+
+.backdark{
+  background: linear-gradient(135deg, #121212, #5035a377);
+}
+
+.backlight{
+  background: linear-gradient(135deg, #ffffff, #849ab0e6);
 }
 
 /*
