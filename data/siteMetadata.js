@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Ederin.net',
   author: 'Derek Willian',
   headerTitle: 'Ederin.net',
-  description: 'Criado com Next.js, Tailwind CSS e MDX',
+  description: 'Ederin.net, access now!',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://tailwind-css-starter-blog-orpin-gamma.vercel.app/',
