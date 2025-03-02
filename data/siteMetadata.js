@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Web Log / Derek Willian',
+  title: 'Ederin.net',
   author: 'Derek Willian',
-  headerTitle: 'Web Log / Derek',
+  headerTitle: 'Ederin.net',
   description: 'Criado com Next.js, Tailwind CSS e MDX',
   language: 'en-us',
   theme: 'dark', // system, dark or light
