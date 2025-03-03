@@ -8,7 +8,8 @@ import SearchButton from './SearchButton'
 import Image from '@/components/Image'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full  justify-between py-10'
+  let headerClass =
+    'flex items-center w-full h-20 bg-white dark:bg-black bg-opacity-75 justify-between py-10'
   if (siteMetadata.stickyNav) {
     headerClass += ' sticky top-0 z-50'
   }
@@ -19,18 +20,17 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* <div className="mr-3">
             <Image
-           src="/static/images/1.png"
+           src="/static/images/ederin1.png"
            width={50}
            height={80}
-           className='rounded-md border-2 border-red-600'>
+           className='rounded-md'>
           
 
             </Image>
           </div> */}
+
           {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
-            </div>
+            <div className="h-6 text-2xl font-semibold sm:block">{siteMetadata.headerTitle}</div>
           ) : (
             siteMetadata.headerTitle
           )}

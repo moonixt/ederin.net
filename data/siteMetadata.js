@@ -8,8 +8,8 @@ const siteMetadata = {
   theme: 'dark', // system, dark or light
   siteUrl: 'https://tailwind-css-starter-blog-orpin-gamma.vercel.app/',
   siteRepo: 'https://github.com/moonixt/tailwind-weblog',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/avatars/eva.jpeg`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/avatars/eva.jpeg`,
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/ederin1.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/ederin1.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'address@yoursite.com',
   github: 'https://github.com/moonixt',
@@ -24,7 +24,7 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
-  stickyNav: false,
+  stickyNav: true,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.

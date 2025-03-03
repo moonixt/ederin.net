@@ -1,5 +1,19 @@
 'use client'
-
+import {
+  TypeScript,
+  JavaScript,
+  NextJSDark,
+  Django,
+  PythonDark,
+  Electron,
+  ReactDark,
+  TailwindCSSDark,
+  AngularDark,
+  NodeJSDark,
+  MongoDB,
+  GithubDark,
+  VSCodeDark,
+} from '@fdorantesm/react-skill-icons'
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
@@ -18,8 +32,8 @@ export default function AuthorLayout({ children, content }: Props) {
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         {/* <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-green-400 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
-          <Typical steps={['Seja bem vindo!', 4000, 'Aproveite sua visita',4000,]} wrapper="span" loop="infinity" />
+          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-black dark:text-white sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 ">
+          <Typical steps={['Ederin.net', 4000,]} wrapper="span" loop="infinity" />
           </h1>
           
         </div> */}
@@ -34,7 +48,7 @@ export default function AuthorLayout({ children, content }: Props) {
                 className="h-48 w-48 rounded-full border-2 border-blue-300"
               />
             )}
-            <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight text-pink-600">
+            <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight text-blue-300">
               {name}
             </h3>
             <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
@@ -46,6 +60,22 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="x" href={twitter} />
               <SocialIcon kind="bluesky" href={bluesky} />
             </div>
+            {/* <div id="skills" className="flex flex-wrap space-x-2">
+              
+        <TypeScript width={50} height={100} />
+        <JavaScript width={50} height={100} />
+        <NextJSDark width={50} height={100} />
+        <Django width={50} height={100} />
+        <PythonDark width={50} height={100} />
+        <Electron width={50} height={100} />
+        <ReactDark width={50} height={100} />
+        <TailwindCSSDark width={50} height={100} />
+        <AngularDark width={50} height={100} />
+        <NodeJSDark width={50} height={100} />
+        <MongoDB width={50} height={100} />
+        <GithubDark width={50} height={100} />
+        <VSCodeDark width={50} height={100} />
+        </div> */}
           </div>
           <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
             {children}
@@ -54,9 +84,9 @@ export default function AuthorLayout({ children, content }: Props) {
 
         <section>
           <Image
-            src="/static/images/rose.jpg"
-            width={1920}
-            height={1080}
+            src="/static/images/ederin1.png"
+            width={1000}
+            height={1000}
             alt="hero"
             className="items-start space-y-2 rounded-lg pt-5 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0"
           />

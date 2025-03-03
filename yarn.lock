@@ -2141,6 +2141,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fdorantesm/react-skill-icons@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@fdorantesm/react-skill-icons@npm:1.0.5"
+  peerDependencies:
+    react: ^16.8.0
+    react-dom: ^16.8.0
+  checksum: cda51b96fd5922a97d0e3972988dfc34a3ee8039419049be8613cd2888837ed7e0f19e978d58d83ffba733b837c9d2f3f5981e64cf08542a55acc2282bcc41f7
+  languageName: node
+  linkType: hard
+
 "@floating-ui/core@npm:^1.6.0":
   version: 1.6.9
   resolution: "@floating-ui/core@npm:1.6.9"
@@ -11486,6 +11496,7 @@ __metadata:
   dependencies:
     "@eslint/eslintrc": ^3.2.0
     "@eslint/js": ^9.16.0
+    "@fdorantesm/react-skill-icons": ^1.0.5
     "@headlessui/react": 2.2.0
     "@next/bundle-analyzer": 15.1.4
     "@svgr/webpack": ^8.0.1

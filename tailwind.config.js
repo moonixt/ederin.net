@@ -8,7 +8,7 @@ module.exports = {
         DEFAULT: {
           css: {
             a: {
-              color: theme('--color-primary-500'),
+              color: theme('--color-green-500'),
               '&:hover': {
                 color: theme('--color-primary-600'),
               },
@@ -29,7 +29,7 @@ module.exports = {
         invert: {
           css: {
             a: {
-              color: theme('--color-pink-500'),
+              color: theme('--color-primary-500'),
               '&:hover': {
                 color: theme('--color-primary-400'),
               },
