@@ -39,15 +39,15 @@ export default function AuthorLayout({ children, content }: Props) {
         </div> */}
         <div className="items-start space-y-2">
           <div className="flex flex-col items-center space-x-2 pt-6">
-            {avatar && (
+            {/* {avatar && (
               <Image
                 src={avatar}
                 alt="avatar"
                 width={192}
                 height={192}
-                className="h-48 w-48 rounded-full border-2 border-blue-300"
+                className="h-48 w-48  rounded-full border-2 border-blue-300"
               />
-            )}
+            )} */}
             <h3 className="pt-4 pb-2 text-2xl leading-8 font-bold tracking-tight text-blue-300">
               {name}
             </h3>
@@ -84,8 +84,8 @@ export default function AuthorLayout({ children, content }: Props) {
 
         <section>
           <Image
-            src="/static/images/ederin1.png"
-            width={1000}
+            src="/static/images/covers/jupiter.jpg"
+            width={1300}
             height={1000}
             alt="hero"
             className="items-start space-y-2 rounded-lg pt-5 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0"
