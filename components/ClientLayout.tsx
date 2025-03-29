@@ -57,7 +57,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           >
             {/* Backdrop - convert to button for accessibility */}
             <button
-              className="bg-opacity-50 fixed inset-0 "
+              className="bg-opacity-50 fixed inset-0"
               onClick={toggleModal}
               aria-label="Close chat assistant"
             />
