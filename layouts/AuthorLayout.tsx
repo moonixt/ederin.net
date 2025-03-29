@@ -88,7 +88,7 @@ export default function AuthorLayout({ children, content }: Props) {
             width={1300}
             height={1000}
             alt="hero"
-            className="items-start space-y-2 rounded-lg pt-5 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0"
+            className="items-start space-y-2 rounded-lg pt-5 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8"
           />
         </section>
       </div>

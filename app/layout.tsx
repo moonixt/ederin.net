@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import ClientLayout from '@/components/ClientLayout'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -67,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <link rel="apple-touch-icon" sizes="76x76" href={'${basePath}/static/favicons/star.png'} />
+      <link rel="apple-touch-icon" sizes="76x76" href={`${basePath}/static/favicons/star.png`} />
       <link
         rel="icon"
         type="image/png"
@@ -96,7 +97,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
-              <main className="mb-auto">{children}</main>
+              <ClientLayout>
+                <main className="mb-auto">{children}</main>
+              </ClientLayout>
             </SearchProvider>
             <Footer />
           </SectionContainer>
