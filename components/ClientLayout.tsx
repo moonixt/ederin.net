@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import IA from '@/components/ChatAssistent'
+import IA from './ChatAssistent'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -36,11 +36,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <div id="Chatbot">
         <button
           onClick={toggleModal}
-          className="fixed right-5 bottom-5 z-40 rounded-full bg-pink-400 p-2 shadow-lg"
+          className="fixed right-5 bottom-5 z-40 rounded-full bg-blue-400 p-2 shadow-lg"
           aria-label="Open chat assistant"
         >
           <Image
-            src={`/static/images/chat.webp`}
+            src={`/static/images/assistent.png`}
             alt="chatbot"
             width={40}
             height={40}
@@ -48,42 +48,43 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           />
         </button>
 
-        {isModalOpen && (
+        {/* Always render the IA component but hide it when modal is closed */}
+        <div
+          className={`fixed inset-0 z-50 ${isModalOpen ? 'block' : 'hidden'}`}
+          role="dialog"
+          aria-modal={isModalOpen ? 'true' : 'false'}
+          aria-hidden={!isModalOpen}
+          aria-labelledby="chat-modal-title"
+        >
+          {/* Backdrop */}
+          <button
+            className="fixed inset-0 bg-black"
+            style={{ opacity: 0.5 }}
+            onClick={toggleModal}
+            aria-label="Close chat assistant"
+          />
+
+          {/* Modal content */}
           <div
-            className="fixed inset-0 z-50"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="chat-modal-title"
+            ref={modalRef}
+            className="fixed right-5 bottom-20 flex h-[70vh] max-h-[600px] min-h-[400px] w-96 flex-col overflow-hidden rounded-lg bg-slate-900 shadow-xl"
+            tabIndex={-1}
           >
-            {/* Backdrop - convert to button for accessibility */}
+            <h2 id="chat-modal-title" className="sr-only">
+              Chat with Atena
+            </h2>
+            <div className="flex-grow overflow-y-auto">
+              <IA />
+            </div>
             <button
-              className="bg-opacity-50 fixed inset-0"
+              className="absolute top-2 right-2 rounded-full bg-red-600 px-2 py-0.5 text-xs text-white"
               onClick={toggleModal}
               aria-label="Close chat assistant"
-            />
-
-            {/* Modal content */}
-            <div
-              ref={modalRef}
-              className="fixed right-5 bottom-20 w-94 overflow-hidden rounded-lg bg-slate-900 p-2 shadow-lg"
-              tabIndex={-1}
             >
-              <h2 id="chat-modal-title" className="sr-only">
-                Chat with Atena
-              </h2>
-              <div>
-                <IA />
-              </div>
-              <button
-                className="absolute top-2 right-2 rounded-full bg-red-600 px-2 py-0.5 text-xs text-white"
-                onClick={toggleModal}
-                aria-label="Close chat assistant"
-              >
-                ✕
-              </button>
-            </div>
+              ✕
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </>
   )

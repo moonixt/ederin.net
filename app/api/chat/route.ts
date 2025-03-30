@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 // Environment variables are secure in server components/API routes
 const ENDPOINT_URL =
   process.env.LANGFLOW_ENDPOINT ||
-  'https://machine25-langflow.hf.space/api/v1/run/fd08729d-6e56-4912-a3d4-afad4a9d457e'
+  'https://machine25-langflow.hf.space/api/v1/run/b6a80cbb-d872-4ba2-bf67-501d8cfea720'
 
 export async function POST(request: Request) {
   try {

@@ -1,26 +1,33 @@
-'use client' // Indica que este código é executado no cliente
+'use client'
 
-import React, { useState } from 'react' // Importa React e o hook useState
-import { ScrollArea } from '@radix-ui/react-scroll-area' // Importa componente de área de rolagem
-import { Avatar, AvatarImage } from '@radix-ui/react-avatar' // Importa componentes de avatar
-import { TypeAnimation } from 'react-type-animation' // Importa componente de animação de texto
+import React, { useState, useRef, useEffect } from 'react'
+import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
+import { TypeAnimation } from 'react-type-animation'
 
 const Ia = () => {
-  // Estado para armazenar o valor do input
   const [inputValue, setInputValue] = useState('')
-  // Estado para armazenar o resultado do chat
   const [chatResult, setChatResult] = useState('')
-  // Estado para controlar o estado de carregamento
   const [isLoading, setIsLoading] = useState(false)
-  // Estado para armazenar resultados anteriores do chat
   const [prevResult, setPrevResult] = useState<string[]>([])
-  // Estado para armazenar a resposta da API
-  // const [apiData, setApiData] = useState<any>(null);
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight
+    }
+  }, [chatResult, prevResult])
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
+    if (!inputValue.trim()) return
+
     setIsLoading(true)
     setChatResult('')
+
+    // Store user message
+    const userMessage = inputValue
+    setPrevResult((prev) => [...prev, `USER: ${userMessage}`])
 
     try {
       // Call your Next.js API route instead of the external endpoint
@@ -64,8 +71,8 @@ const Ia = () => {
       }
 
       const decoder = new TextDecoder()
-      let accumulatedText = '' // Texto acumulado da resposta
-      let partialLine = '' // Linha parcial para processamento
+      let accumulatedText = ''
+      let partialLine = ''
 
       try {
         while (true) {
@@ -73,28 +80,17 @@ const Ia = () => {
           if (done) break
 
           const chunk = decoder.decode(value, { stream: true })
-
-          // Acumula o chunk no buffer de linha parcial
           partialLine += chunk
-
           const lines = partialLine.split('\n')
-
-          // A última linha pode estar incompleta
           partialLine = lines.pop() || ''
 
-          // Processa cada linha completa
           for (const line of lines) {
-            if (line.trim() === '') continue // Ignora linhas vazias
+            if (line.trim() === '') continue
 
             try {
               const event = JSON.parse(line)
-
-              // Verifica se é um evento de token
               if (event.event === 'token' && event.data && event.data.chunk !== undefined) {
-                // Acumula o texto do token
                 accumulatedText += event.data.chunk
-
-                // Atualiza a UI em tempo real com o texto acumulado
                 setChatResult(accumulatedText)
               }
             } catch (e) {
@@ -103,9 +99,9 @@ const Ia = () => {
           }
         }
 
-        // Quando terminar a leitura completa do stream, adiciona ao histórico
         if (accumulatedText) {
-          setPrevResult((prev) => [...prev, accumulatedText])
+          setPrevResult((prev) => [...prev, `ATENA: ${accumulatedText}`])
+          setChatResult('') // Clear the streaming result once it's added to history
         }
       } catch (error) {
         console.error('Erro ao processar stream:', error)
@@ -114,87 +110,126 @@ const Ia = () => {
       console.error('Erro ao processar stream:', error)
     }
 
-    setInputValue('') // Limpa o input
+    setInputValue('')
     setIsLoading(false)
   }
 
   return (
-    <div className="flex h-150 flex-col">
+    <div className="flex h-full flex-col">
       <div className="flex h-full w-full flex-col bg-black text-white">
-        <div className="pt-2">
+        {/* Header */}
+        <div className="border-b border-gray-800 pt-2 pb-2">
           <div className="flex justify-center text-xl font-bold text-white">
-            <h1>ATENA</h1>
+            <h1>Maxine</h1>
           </div>
         </div>
-        <div className="mt-1 flex-1 overflow-hidden">
-          <ScrollArea className="h-120 overflow-y-auto">
-            <section>
-              <Avatar className="items-top flex gap-2 p-2">
-                <AvatarImage
-                  className="h-10 w-10 rounded-full border-2 border-red-300 object-cover"
-                  src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/VqCmNMo_PnKgGaAzKRJKT.png"
-                ></AvatarImage>
-                {/* Componente TypeAnimation para exibir texto animado */}
-                <TypeAnimation
-                  className="text-sm"
-                  sequence={[
-                    'Olá',
-                    1000,
-                    'Olá! Eu sou a Atena!',
-                    1000,
-                    'Como posso te ajudar?',
-                    1000,
-                    'Digite uma mensagem para começarmos!',
-                    1000,
-                    'Pode ser qualquer coisa!😊',
-                    1000,
-                  ]}
-                  speed={50}
-                  repeat={Infinity}
-                />
-              </Avatar>
-              <Avatar>
-                <section className="flex flex-col gap-2 px-2 pt-2 text-white">
-                  {prevResult.length > 1 &&
-                    prevResult.map(
-                      (result, index) =>
-                        result &&
-                        (index !== prevResult.length - 1 || result !== chatResult) && (
-                          <div key={index} className="flex items-center gap-1">
-                            <AvatarImage
-                              className="h-10 w-10 rounded-full border-2 border-slate-300"
-                              src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/VqCmNMo_PnKgGaAzKRJKT.png"
-                            />
-                            <p className="text-xs text-slate-400">{result}</p>
-                          </div>
-                        )
+
+        {/* Chat area */}
+        <div className="flex-1 overflow-hidden">
+          <div ref={scrollAreaRef} className="h-full overflow-y-auto px-2 py-2">
+            <section className="space-y-4 space-x-4">
+              {/* Welcome message */}
+              <div className="flex items-start gap-2">
+                <div className="flex-shrink-0">
+                  <Avatar>
+                    <AvatarImage
+                      className="h-15 w-15 rounded-full border-2 border-red-300 object-cover"
+                      src="/static/images/assistent.png"
+                    />
+                  </Avatar>
+                </div>
+                <div className="max-w-[85%] rounded-lg bg-gray-950 p-2">
+                  <TypeAnimation
+                    className="text-sm"
+                    sequence={[
+                      'Olá',
+                      1000,
+                      'Olá! Eu sou a Maxine!',
+                      1000,
+                      'Como posso te ajudar?',
+                      1000,
+                      'Digite uma mensagem para começarmos!',
+                      1000,
+                      'Pode ser qualquer coisa!😊',
+                      1000,
+                    ]}
+                    speed={50}
+                    repeat={Infinity}
+                  />
+                </div>
+              </div>
+
+              {/* Chat history */}
+              {prevResult.map((result, index) => {
+                const isUser = result.startsWith('USER:')
+                const messageContent = isUser
+                  ? result.substring(5).trim()
+                  : result.substring(6).trim()
+
+                return (
+                  <div
+                    key={index}
+                    className={`flex items-start gap-2 ${isUser ? 'justify-end' : ''}`}
+                  >
+                    {!isUser && (
+                      <div className="flex-shrink-0">
+                        <Avatar>
+                          <AvatarImage
+                            className="h-15 w-15 rounded-full border-2 border-slate-300"
+                            src="/static/images/assistent.png"
+                          />
+                        </Avatar>
+                      </div>
                     )}
-                  {chatResult && (
-                    <div className="flex items-center gap-1">
-                      <AvatarImage
-                        className="h-10 w-10 rounded-full border-2 border-blue-300"
-                        src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/VqCmNMo_PnKgGaAzKRJKT.png"
-                      />
-                      <p className="">{chatResult}</p>
+                    <div
+                      className={`max-w-[85%] rounded-lg p-2 text-sm ${
+                        isUser ? 'bg-blue-600 text-white' : 'bg-gray-950 text-slate-200'
+                      }`}
+                    >
+                      {messageContent}
                     </div>
-                  )}
-                </section>
-              </Avatar>
+                    {isUser && (
+                      <div className="flex-shrink-0">
+                        <div className="flex h-8 w-15 items-center justify-center rounded-full bg-blue-500 font-semibold text-white">
+                          U
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+
+              {/* Current message being typed - only show when not in history yet */}
+              {chatResult && (
+                <div className="flex items-start gap-2">
+                  <div className="flex-shrink-0">
+                    <Avatar>
+                      <AvatarImage
+                        className="ro15nded-full h-8 w-15 border-2 border-blue-300"
+                        src="/static/images/assistent.png"
+                      />
+                    </Avatar>
+                  </div>
+                  <div className="max-w-[85%] rounded-lg bg-gray-800 p-2 text-sm">{chatResult}</div>
+                </div>
+              )}
             </section>
-          </ScrollArea>
+          </div>
         </div>
-        <div className="w-full p-2">
-          <form onSubmit={handleSubmit} className="flex gap-1">
+
+        {/* Input area */}
+        <div className="w-full border-t border-gray-800 p-3">
+          <form onSubmit={handleSubmit} className="flex gap-2">
             <input
               type="text"
-              className="h-8 w-full rounded-lg border border-gray-300 p-1 text-xs text-black"
+              className="h-10 w-full rounded-lg border border-gray-600 bg-gray-800 p-2 text-sm text-white"
               placeholder="Digite uma mensagem"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               disabled={isLoading}
             />
             <button
-              className="rounded-lg bg-gray-700 px-2 text-xs"
+              className="rounded-lg bg-blue-600 px-4 text-white hover:bg-blue-700"
               type="submit"
               disabled={isLoading}
             >
@@ -207,4 +242,4 @@ const Ia = () => {
   )
 }
 
-export default Ia // Exporta o componente Main como padrão
+export default Ia
